@@ -1,0 +1,89 @@
+﻿sap.ui.define([
+	"sap/ui/core/mvc/Controller"
+], function (Controller) {
+	"use strict";
+
+	return Controller.extend("com.example.FormValidationsDemo1.controller.View1", {
+		onInit: function () {
+			// Setting DatePicker 
+			var dp = this.getView().byId("dp").setValue(String(new Date()).slice(4,15));
+			// Setting Mobile Number Max-Length
+			var mobile = this.getView().byId("mobile").setProperty("mxLength",10);
+		},
+		afterName: function()
+		{
+			var name = this.getView().byId("name").getValue();
+			
+			if(name.length!=0)
+			{
+				
+				this.getView().byId("name").setValue(name);
+				
+				this.getView().byId("email").setEditable(true);
+				this.getView().byId("mobile").setVisible(true);
+				this.getView().byId("Lmobile").setVisible(true);
+			}
+			else
+			{
+				this.getView().byId("email").setEditable(false);
+				this.getView().byId("mobile").setVisible(false);
+				this.getView().byId("Lmobile").setVisible(false);
+			}
+			
+		},
+		
+		checkEmail: function()
+		{
+			var email = this.getView().byId("email");
+			
+			if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.getValue())!= true)
+			{
+				email.setProperty("valueState","Error");
+				email.setProperty("valueStateText","Invalid Email Address...");
+				this.getView().byId("mobile").setProperty("editable",false);
+			}
+			else
+			{
+				email.setProperty("valueState","None");
+				email.setProperty("valueStateText","");
+				this.getView().byId("mobile").setProperty("editable",true);
+			}
+			
+		},
+		
+		checkDate: function()
+		{
+			var dp = this.getView().byId("dp").getValue();
+			
+			var dpDate = new Date(dp);
+			/*	var givday = givdate.getDate();
+				var givmon = givdate.getMonth();
+				var givyear = givdate.getYear()
+			*/	
+			var minDate = new Date("10/22/1999");
+			var maxDate = new Date("10/24/1999");
+			
+			// alert("Date : "+dpDate+"\n"+"min : "+minDate+"\n"+"max : "+maxDate);
+			
+			if(dpDate>minDate && dpDate<maxDate)
+			{
+				alert("Welcome Masthan");
+			}
+			else
+			{
+				alert("Who are you? Get Out!!!");
+				
+			}
+			
+			
+		},
+		
+		validateForm:function(){
+			var name = this.getView().byId("name").getValue();
+			var email = this.getView().byId("email").getValue();
+			var mobile = this.getView().byId("mobile").getValue();
+		
+			
+		}
+	});
+});

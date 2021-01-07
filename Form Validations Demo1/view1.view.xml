@@ -1,0 +1,43 @@
+﻿<mvc:View controllerName="com.example.FormValidationsDemo1.controller.View1" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						
+						<f:SimpleForm
+							id="myform"
+							title="Performing Validations">
+							
+							<f:content>
+								
+								<!--<Link text="Open SAP Homepage" target="_blank" href="http://www.sap.com" />-->
+								
+								<Label text="Name" id="Lname" labelFor="name" />
+								<Input type="Text" id="name" placeholder="Enter your Name..." required="true" liveChange="afterName" />
+								
+								<Label text="Email" id="Lemail" labelFor="email" />
+								<Input type="Email" id="email" editable="false" placeholder="Enter Your Email..." change="checkEmail" required="true" />
+								
+								<Label text="Mobile" id="Lmobile" visible="false" labelFor="mobile" />
+								<Input type="Number" id="mobile" editable="false" visible="false" placeholder="Enter Your Mobile..." required="true" />
+								
+								<Label text="Date" id="Ldp" labelFor="dp" />
+								<DatePicker
+									id="dp"
+									placeholder="Enter Date..."
+									change="checkDate"
+									class="sapUiSmallMarginBottom" />
+								
+								<Button type="Accept" text="Submit" press="validateForm" /> 
+								
+							</f:content>
+							
+						</f:SimpleForm>
+						
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
