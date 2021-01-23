@@ -1,0 +1,22 @@
+<mvc:View controllerName="com.masthan.WalkthroughDemo.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<headerContent>
+						<Button
+							icon="sap-icon//hello-world"
+							press=".onOpenDialog" />
+					</headerContent>
+					<content>
+						
+						<mvc:XMLView viewName="com.masthan.WalkthroughDemo.view.HelloPanel" />
+						<mvc:XMLView viewName="com.masthan.WalkthroughDemo.view.ListDemoAggregation" />
+						
+						
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
